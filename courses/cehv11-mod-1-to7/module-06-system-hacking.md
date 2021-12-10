@@ -79,7 +79,7 @@ It is not possible to copy the SAM file to another location in the case of onlin
 
 > LM hashes have been disabled in Windows Vista and later Windows operating systems, LM will be blank in those systems.
 
-![](<../../.gitbook/assets/image (67).png>)
+![](<../../.gitbook/assets/image (64).png>)
 
 * Windows OSs use a Security Account Manager (SAM) database file to store user passwords.
 * The SAM file is stored at `%SystemRoot%/system32/config/SAM` in Windows systems, and Windows mounts it in the registry under the HKLM/SAM registry hive. It stores LM or NTLM hashed passwords.
@@ -102,7 +102,7 @@ NTLM authentication consists of two protocols: NTLM authentication protocol and 
 
 **NTLM Authentication Process**
 
-![](<../../.gitbook/assets/image (68).png>)
+![](<../../.gitbook/assets/image (44).png>)
 
 > **Note**: Microsoft has upgraded its default authentication protocol to Kerberos, which provides stronger authentication for client/server applications than NTLM.
 
@@ -132,7 +132,7 @@ Kerberos employs the Key Distribution Center (KDC), which is a trusted third par
 * Both the server and the user verify each other’s identity.
 * Messages sent through this protocol are protected against replay attacks and eavesdropping.
 
-![](<../../.gitbook/assets/image (69).png>)
+![](<../../.gitbook/assets/image (65).png>)
 
 * Kerberos employs the KDC, which a trusted third party, and consists of two logically distinct parts: an AS and a TGS.&#x20;
 * The authorization mechanism of Kerberos provides the user with a ticket-granting ticket (TGT) that serves post-authentication for later access to specific services, Single Sign-On via which the user need not re-enter the password again to access any authorized services.&#x20;
@@ -297,27 +297,27 @@ Kerberos employs the Key Distribution Center (KDC), which is a trusted third par
 
 **Trojans/Spyware/Keyloggers**:
 
-![](<../../.gitbook/assets/image (70).png>)
+![](<../../.gitbook/assets/image (34).png>)
 
 **Hash Injection/Pass-the-Hash (PtH) Attack**:
 
-![](<../../.gitbook/assets/image (71).png>)
+![](<../../.gitbook/assets/image (47).png>)
 
 **LLMNR/NBT-NS Poisoning**:
 
-![](<../../.gitbook/assets/image (72).png>)
+![](<../../.gitbook/assets/image (66).png>)
 
 **Internal Monologue Attack**:
 
-![](<../../.gitbook/assets/image (73).png>)
+![](<../../.gitbook/assets/image (37).png>)
 
 **AS-REP Roasting (Cracking TGT)**:
 
-![](<../../.gitbook/assets/image (74).png>)
+![](<../../.gitbook/assets/image (57).png>)
 
 **Kerberoasting (Cracking TGS)**:
 
-![](<../../.gitbook/assets/image (75).png>)
+![](<../../.gitbook/assets/image (29).png>)
 
 ### Tools: password recovery tools
 
@@ -564,13 +564,13 @@ Attackers may use this vulnerability to read adjacent memory locations of a proc
 
 Pivoting and relaying are the techniques used to find detailed information about the target network. These techniques are performed after successfully compromising a target system. The compromised system is used to penetrate the target network to access other systems and resources that are otherwise inaccessible from the attacking network.
 
-![](<../../.gitbook/assets/image (76).png>)
+![](<../../.gitbook/assets/image (36).png>)
 
 #### Relaying
 
 In the pivoting technique, only the systems accessible through the compromised systems are exploited, whereas in the relaying technique, the resources accessible through the compromised system are explored or accessed. Using pivoting, attackers can open a remote shell on the target system tunneled through the initial shell on the compromised system. In relaying, resources present on the other systems are accessed through a tunneled shell session on the compromised system.
 
-![](<../../.gitbook/assets/image (77).png>)
+![](<../../.gitbook/assets/image (58).png>)
 
 ### Other privilege escalation techniques
 

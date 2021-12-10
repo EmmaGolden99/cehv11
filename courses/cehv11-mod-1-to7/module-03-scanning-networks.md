@@ -23,7 +23,7 @@ Objectives of Network Scanning:
 * To discover services running on hosts&#x20;
 * To discover vulnerabilities in live hosts
 
-![](<../../.gitbook/assets/image (36).png>)
+![](<../../.gitbook/assets/image (52).png>)
 
 ### TCP Communication Flags
 
@@ -38,7 +38,7 @@ The TCP header contains various flags that control the transmission of data acro
 | RST  | Reset           | Resets a connection. It confirms the receipt of the transmission and identifies the next expected sequence number. When the system successfully receives a packet, it sets the value of its flag to “1,” thus implying that the receiver should pay attention to it.                                                                                                                                                                      |
 | SYN  | Synchronize     | Initiates a connection between hosts. It confirms the receipt of the transmission and identifies the next expected sequence number. When the system successfully receives a packet, it sets the value of its flag to “1,” thus implying that the receiver should pay attention to it.                                                                                                                                                     |
 
-![](<../../.gitbook/assets/image (37).png>)
+![](<../../.gitbook/assets/image (46).png>)
 
 > SYN scanning mainly deals with three flags: SYN, ACK, and RST. You can use these three flags for gathering illegal information from servers during enumeration.
 
@@ -48,7 +48,7 @@ TCP is connection oriented, i.e., it prioritizes connection establishment before
 
 #### TCP Session Establishment
 
-![](<../../.gitbook/assets/image (38).png>)
+![](<../../.gitbook/assets/image (71).png>)
 
 A TCP session initiates using a three-way handshake mechanism:
 
@@ -64,7 +64,7 @@ The TCP protocol maintains stateful connections for all connection-oriented prot
 
 After completing all the data transfers through the established TCP connection, the sender sends the connection termination request to the receiver through a FIN or RST packet. Upon receiving the connection termination request, the receiver acknowledges the termination request by sending an ACK packet to the sender and finally sends its own FIN packet. Then, the system terminates the established connection.
 
-![](<../../.gitbook/assets/image (39).png>)
+![](<../../.gitbook/assets/image (60).png>)
 
 ## 2. Scanning Tools
 
@@ -179,7 +179,7 @@ Attackers use the Nmap tool to perform ARP ping scan for discovering live hosts 
 
 > _Note_: -sn is the Nmap command to disable the port scan. Since Nmap uses ARP ping scan as the default ping scan, to disable it and perform other desired ping scans, you can use --disable-arp-ping.
 
-![](<../../.gitbook/assets/image (40).png>)
+![](<../../.gitbook/assets/image (75).png>)
 
 ```
 nmap -sn -PR <HOST_IP>
@@ -202,7 +202,7 @@ Advantages:
 * If the target host is offline or unreachable, various error messages such as host/network unreachable or TTL exceeded could be returned.&#x20;
 * Basically: port is reachable (which doesn't mean the host is alive, the port can be also closed).
 
-![](<../../.gitbook/assets/image (41).png>)
+![](<../../.gitbook/assets/image (51).png>)
 
 ```
 nmap -sn -PU <HOST_IP>
@@ -220,7 +220,7 @@ Advantages:
 * ICMP ECHO ping scan involves sending ICMP ECHO requests to a host.
 * If the host is alive, it will return an ICMP ECHO reply.
 
-![](<../../.gitbook/assets/image (42).png>)
+![](<../../.gitbook/assets/image (72).png>)
 
 ```
 nmap -sn -PE <HOST_IP>
@@ -250,7 +250,7 @@ ICMP echo scanning pings all the machines in the target network to discover live
 
 When a system pings, it sends a single packet across the network to a specific IP address. This packet contains 64 bytes (56 data bytes and 8 bytes of protocol header information). The sender then waits or listens for a return packet from the target system.
 
-![](<../../.gitbook/assets/image (43).png>)
+![](<../../.gitbook/assets/image (35).png>)
 
 ```
 nmap -sn -PE <IP_RANGE>
@@ -319,7 +319,7 @@ Disadvantage:
 * Port 80 is used as the default destination port.&#x20;
 * A range of ports can also be specified in this type of pinging format without inserting a space between -PS and the port number (e.g., PS22-25,80,113,1050,35000), where the probe will be performed against each port parallelly.
 
-![](<../../.gitbook/assets/image (44).png>)
+![](<../../.gitbook/assets/image (70).png>)
 
 ```
 nmap –sn –PS <target IP address>
@@ -338,7 +338,7 @@ Advantages:
 * Since there is no prior connection between the attacker and the target host, after receiving the ACK packet, the target host responds with an RST flag to terminate the request.
 * The reception of this RST packet at the attacker’s end indicates that the host inactive.
 
-![](<../../.gitbook/assets/image (45).png>)
+![](<../../.gitbook/assets/image (38).png>)
 
 ```
 nmap -sn -PA <target IP address>
@@ -358,7 +358,7 @@ IP protocol ping is the latest host discovery option that sends IP ping packets 
 * In a nutshell, attackers send different probe packets of different IP protocols to the target host.
 * Any response from any probe indicates that a host is online.
 
-![](<../../.gitbook/assets/image (46).png>)
+![](<../../.gitbook/assets/image (62).png>)
 
 ```
 nmap -sn -PO <target IP address>
@@ -411,7 +411,7 @@ Port scanning techniques are further categorized as described below. This catego
 * In the TCP three-way handshake, the client sends a SYN packet, which the recipient acknowledges with a SYN+ACK packet.
 * Then, the client acknowledges the SYN+ACK packet with an ACK packet to complete the connection. Once the handshake is completed, the scanner sends an RST packet to end the connection.
 
-![](<../../.gitbook/assets/image (47).png>)
+![](<../../.gitbook/assets/image (56).png>)
 
 ```
 nmap -sT -v <target IP address>
@@ -442,7 +442,7 @@ Process:
 * If the server responds with an RST packet, then the remote port is in the "closed” state.&#x20;
 * The client sends the RST packet to close the initiation before a connection can be established.
 
-![](<../../.gitbook/assets/image (48).png>)
+![](<../../.gitbook/assets/image (43).png>)
 
 ```
 nmap -sS -v <target IP address>
@@ -464,7 +464,7 @@ Advantage:
   * A NULL probe with no TCP flags set
   * A SYN/ACK probe
 
-![](<../../.gitbook/assets/image (49).png>)
+![](<../../.gitbook/assets/image (30).png>)
 
 > **Note**: Inverse TCP flag scanning is known as FIN, URG, and PSH scanning based on the flag set in the probe packet. If there is no flag set, it is known as NULL scanning. If only the FIN flag is set, it is known as FIN scanning, and if all of FIN, URG, and PSH are set, it is known as Xmas scannin
 
@@ -484,7 +484,7 @@ Disadvantages:
 * FIN scanning works only with OSes that use an RFC 793-based TCP/IP implementation.
 * Attackers use the TCP Xmas scan to determine if ports are closed on the target machine via the RST packet.&#x20;
 
-![](<../../.gitbook/assets/image (50).png>)
+![](<../../.gitbook/assets/image (48).png>)
 
 ```
 nmap -sX -v <target IP address>
@@ -511,7 +511,7 @@ Disadvantages:
 * Nmap interprets a port as open|filtered when there is no response from the Maimon scan probe even after many retransmissions.&#x20;
 * The port is closed if the probe gets a response as an RST packet.
 
-![](<../../.gitbook/assets/image (51).png>)
+![](<../../.gitbook/assets/image (41).png>)
 
 ```
 nmap -sM -v <target IP address>
@@ -528,7 +528,7 @@ nmap -sM -v <target IP address>
 * The ACK flag probe scan exploits the vulnerabilities within the BSD-derived TCP/IP stack.
 * Thus, such scanning is effective only on those OSs and platforms on which the BSD derives TCP/IP stacks.
 
-![](<../../.gitbook/assets/image (52).png>)
+![](<../../.gitbook/assets/image (40).png>)
 
 Categories of ACK flag probe scanning include:
 
@@ -546,7 +546,7 @@ nmap –ttl [time] [target]
   * If the window value of the RST packet on a particular port is non-zero, then that port is open.
   * When the returned RST value is zero, then the port is closed. If there is no response even after many retransmissions and an ICMP unreachable error (type 3, code 1, 2, 3, 9, 10, or 13) is returned, then the port is inferred to be a filtered port.
 
-![](<../../.gitbook/assets/image (53).png>)
+![](<../../.gitbook/assets/image (50).png>)
 
 Advantages:
 
@@ -565,7 +565,7 @@ nmap -sW [target]
 * The ACK flag probe scanning technique also helps in checking the filtering systems of target networks. The attacker sends an ACK probe packet to check the filtering mechanism (firewalls) of packets employed by the target network.
 * Sending an ACK probe packet with a random sequence number and getting no response from the target means that the port is filtered (stateful firewall is present); an RST response from the target means that the port is not filtered (no firewall is present).
 
-![](<../../.gitbook/assets/image (54).png>)
+![](<../../.gitbook/assets/image (74).png>)
 
 **ACK Flag Probe Scanning using Nmap**:
 
@@ -584,7 +584,7 @@ Process: 1. Send SYN + ACK packet to the zombie machine to probe its IPID number
 
 The attacker performs this scan by impersonating another computer via spoofing. The attacker does not send a packet from her/his IP address; instead, he/she uses another host, often called a “zombie,” to scan the remote host and identify any open ports.
 
-![](<../../.gitbook/assets/image (55).png>)
+![](<../../.gitbook/assets/image (61).png>)
 
 ```
 nmap -sI ... # todo: complete, no example
@@ -608,7 +608,7 @@ UDP Port Closed:
 * If a UDP packet is sent to a closed port, the system will respond with an ICMP port unreachable message.
 * Spywares, Trojan horses, and other malicious applications use UDP ports.
 
-![](<../../.gitbook/assets/image (56).png>)
+![](<../../.gitbook/assets/image (39).png>)
 
 ```
 nmap -sU -v <target IP address>
@@ -637,7 +637,7 @@ Disadvantages:
 * Some SCTP applications include discovering VoIP, IP telephony, and Signaling System 7/SIGnaling TRANsport (SS7/SIGTRAN)-related services.&#x20;
 * SCTP association comprises a four-way handshake method, as shown in the screenshot below.
 
-![](<../../.gitbook/assets/image (57).png>)
+![](<../../.gitbook/assets/image (69).png>)
 
 #### SCTP INIT Scanning
 
@@ -649,7 +649,7 @@ Disadvantages:
 * After several retransmissions, if there is no response, then the port is indicated as a filtered port.
 * The port is also indicated as a filtered port if the target server responds with an ICMP unreachable exception (type 3, code 0, 1, 2, 3, 9, 10, or 13).
 
-![](<../../.gitbook/assets/image (58).png>)
+![](<../../.gitbook/assets/image (42).png>)
 
 ```
 nmap -sY <target IP address>
@@ -666,7 +666,7 @@ Advantages:
 * If the target sends back the ABORT chunk response, then the port is considered as a closed port.&#x20;
 * The COOKIE ECHO chunk is not blocked by non-stateful firewall rule sets as in the INIT scan.
 
-![](<../../.gitbook/assets/image (59).png>)
+![](<../../.gitbook/assets/image (63).png>)
 
 ```
 nmap -sZ <target IP address>
@@ -963,7 +963,7 @@ Although firewalls and IDS can prevent malicious traffic (packets) from entering
 * The system splits the TCP header into several fragments and transmits them over the network.
 * IP reassembly on the server side may result in unpredictable and abnormal results, such as fragmentation of the IP header data.
 
-![](<../../.gitbook/assets/image (60).png>)
+![](<../../.gitbook/assets/image (45).png>)
 
 SYN/FIN scan using the Nmap tool:
 
@@ -992,7 +992,7 @@ Disadvanges:
 
 This figure shows source routing, where the originator dictates the eventual route of the traffic:
 
-![](<../../.gitbook/assets/image (61).png>)
+![](<../../.gitbook/assets/image (55).png>)
 
 #### 3. Source Port Manipulation
 
@@ -1002,7 +1002,7 @@ This figure shows source routing, where the originator dictates the eventual rou
 * Although the firewalls can be made secure using application-level proxies or protocol-parsing firewall elements, this technique helps the attacker to bypass the firewall rules easily.
 * The attacker tries to manipulate the original port number with the common port numbers, which can easily bypass the IDS/firewall.
 
-![](<../../.gitbook/assets/image (62).png>)
+![](<../../.gitbook/assets/image (59).png>)
 
 ```
 # Nmap uses the -g or --source-port options to perform source port manipulation
@@ -1054,7 +1054,7 @@ IP spoofing using Hping3:
 Hping3 www.certifiedhacker.com -a 7.7.7.7
 ```
 
-![](<../../.gitbook/assets/image (63).png>)
+![](<../../.gitbook/assets/image (67).png>)
 
 Disadvantage:
 
@@ -1066,7 +1066,7 @@ Disadvantage:
 
 In this technique, you initially send a packet (ping request) to the legitimate host and wait for a reply. Check whether the TTL value in the reply matches with that of the packet you are checking. Both will have the same TTL if they are using the same protocol. Although the initial TTL values vary according to the protocol used, a few initial TTL values are commonly used. For TCP/UDP, the values are 64 and 128; for ICMP, they are 128 and 255.
 
-![](<../../.gitbook/assets/image (64).png>)
+![](<../../.gitbook/assets/image (54).png>)
 
 If the reply is from a different protocol, then you should check the actual hop count to detect the spoofed packets. Deduct the TTL value in the reply from the initial TTL value to determine the hop count. The packet is a spoofed packet if the reply TTL does not match the TTL of the packet. It will be very easy to launch an attack if the attacker knows the hop count between the source and the host. In this case, the test result is a false negative.
 
@@ -1076,7 +1076,7 @@ If the reply is from a different protocol, then you should check the actual hop 
 
 Users can identify spoofed packets by monitoring the IP identification (IPID) number in the IP packet headers. The IPID increases incrementally each time a system sends a packet. Every IP packet on the network has a "fragment identification" number, which is increased by one for every packet transmission. To identify whether a packet is spoofed, send a probe packet to the source IP address of the packet and observe the IPID number in the reply. The IPID value in the response packet must be close to but slightly greater than the IPID value of the probe packet. The source address of the IP packet is spoofed if the IPID of the response packet is not close to that of the probe packet.
 
-![](<../../.gitbook/assets/image (65).png>)
+![](<../../.gitbook/assets/image (53).png>)
 
 > Note: This method is effective even when both the attacker and the target are on the same subnet.
 
@@ -1086,7 +1086,7 @@ Attackers still send packets even after the window size has been exhausted.
 
 The TCP can optimize the flow control on both the sender’s and the receiver’s end with its algorithm. The algorithm accomplishes flow control using the sliding window principle. The user can control the flow of IP packets by the window size field in the TCP header. This field represents the maximum amount of data that the recipient can receive and the maximum amount of data that the sender can transmit without acknowledgement. Thus, this field helps to control data flow. The sender should stop sending data whenever the window size is set to zero. In general flow control, the sender should stop sending data once the initial window size is exhausted. The attacker, who is unaware of the ACK packet containing window size information, might continue to send data to the victim. If the victim receives data packets beyond the window size, they are spoofed packets. For effective flow control and early detection of spoofing, the initial window size must be very small. Most spoofing attacks occur during the handshake, as it is challenging to build multiple spoofing replies with the correct sequence number. Therefore, apply the flow control spoofed packet detection method to the handshake. In a TCP handshake, the host sending the initial SYN packet waits for SYN-ACK before sending the ACK packet. To check whether you are getting the SYN request from a genuine client or a spoofed one, set SYN-ACK to zero. If the sender sends an ACK with any data, it means that the sender is a spoofed one. This is because when SYN-ACK is set to zero, the sender must respond to it only with the ACK packet, without additional data.
 
-![](<../../.gitbook/assets/image (66).png>)
+![](<../../.gitbook/assets/image (73).png>)
 
 Attackers sending spoofed TCP packets will not receive the target's SYN-ACK packets. Attackers cannot respond to changes in the congestion window size. When the received traffic continues after a window size is exhausted, the packets are most likely spoofed.
 
