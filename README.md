@@ -1,3 +1,7 @@
+---
+description: Certified Ethical Hacker Course
+---
+
 # CEHv11
 
 {% hint style="danger" %}
