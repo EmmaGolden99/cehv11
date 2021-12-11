@@ -1,5 +1,6 @@
 ---
 description: Certified Ethical Hacker Course
+coverY: 0
 ---
 
 # CEHv11
