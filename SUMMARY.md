@@ -8,3 +8,8 @@
   * [Module 05: Vulnerability Analysis](cehv11-mod-1-to7/module-05-vulnerability-analysis.md)
   * [Module 06: System Hacking](cehv11-mod-1-to7/module-06-system-hacking.md)
   * [Module 07: Malware Threats](cehv11-mod-1-to7/module-07-malware-threats.md)
+
+## Other Courses
+
+* [eJPT](https://app.gitbook.com/s/S4zPJUXHVKDt93XdLSr6/)
+* [eCPPTv2](https://app.gitbook.com/s/UDufP6HFSwEX0O5mMzmE/)
